@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnyMail system</title>
+    <link rel="stylesheet" href="./css/main.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h5>Get Email Content，获取你的任何邮件内容！</span>
+                    <br>
+                    使用随机邮箱，自动获取邮件正文html信息返回，自行提取
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" autocomplete="off" readonly id="email-input" />
+                </div>
+                <div class="form-generate">
+                    <label>用户名</label>
+                    <input type="text" id="username-input" placeholder="用于生成用户名" />
+                </div>
+                <div class="form-generate">
+                    <label>公司名</label>
+                    <input type="text" id="corname-input" placeholder="用于生成公司名称" />
+                </div>
+                <div class="form-generate">
+                    <label>邮件内容</label>
+                    <div id="mail-area" contenteditable="true"></div>
+                </div>
+                <!-- <div class="form-generate">
+                    <label>邮件内容</label>
+                    <textarea id="mails-area"></textarea>
+                </div> -->
+                <button class="btn btn-primary" id="get-email-btn">获取邮箱</button>
+                <button class="btn btn-primary" id="copy-email-btn">复制邮箱</button>
+                <button class="btn btn-primary" id="refresh-name-btn">刷新名称</button>
+                <br /><br />
+            </div>
+        </div>
+        <div class="alert" id="alert" style="display: none"></div>
+    </div>
+</body>
+<script src="./js/script.js"></script>
+<script src="./js/socket.io.min.js"></script>
+
+<script>
+    const textarea = document.getElementById('mail-area');
+    const socket = io();
+    socket.on('msg', msg => {
+        console.log(msg);
+    })
+    socket.on('mailContent', msg => {
+        console.log(msg)
+        textarea.innerHTML = msg
+    })
+</script>
+
+</html>
