@@ -10,3 +10,5 @@ npm run start
 3.需要一个域名，并添加MX记录
 
 4.详细过程在[这里](https://npmcow.com/2023/04/21/da-jian-smtp-fu-wu-ji-you-jian-jie-shou/)发布
+
+5.永久[链接](https://vercel.npmcow.com)
